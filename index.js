@@ -214,8 +214,13 @@ async function cyclicSort() {
 
 //add wait time
 function mergeSort() {
+    if (sorted === true) {
+        alert("Already Sorted!");
+        return;
+    }
     mergeSort_helper(nums, 0, array_length);
     console.log(nums);
+    sorted = true;
 }
 
 async function merge(arr, left, mid, right) {
@@ -290,8 +295,14 @@ function mergeSort_helper(arr, left, right) {
 
 //quick sort
 function quickSort() {
+    if (sorted === true) {
+        alert("Already Sorted!");
+        return;
+    }
     quickSort_helper(0, nums.length -1);
     console.log(nums);
+    sorted = true;
+
 }
 
 async function quickSort_helper(low, high) {
