@@ -3,3 +3,29 @@
     background-color: aquamarine;
     margin: 1px;
 }
+
+.bar_size1 {
+    height: 25px;
+    background-color: aquamarine;
+    margin: 2px;
+}
+
+.bar_size2 {
+    height: 15px;
+    background-color: aquamarine;
+    margin: 2px;
+}
+
+.bar_size3 {
+    height: 10px;
+    background-color: aquamarine;
+    margin: 2px;
+}
+
+.bar_size4 {
+    height: 8px;
+    background-color: aquamarine;
+    margin: 2px;
+}
+
+

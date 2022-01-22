@@ -8,6 +8,7 @@ arrays();
 
 slider.oninput = function() {
     array_length = this.value;
+    output.innerHTML = this.value;
     arrays();
 }
 
@@ -37,7 +38,22 @@ function arrays() {
         nums.push(parseInt(num));
         //creating bars of varying widths
         let bar = document.createElement('div');
-        bar.classList.add("bar");
+        if(array_length>=20 && array_length<=22) {
+            bar.classList.add("bar_size1");
+        }
+        else if(array_length>=23 && array_length<=35) {
+            bar.classList.add("bar_size2");
+        }
+        else if(array_length>=35 && array_length<=50) {
+            bar.classList.add("bar_size3");
+        }
+        else if(array_length>=51 && array_length<=61) {
+            bar.classList.add("bar_size4");
+        }
+        else {
+            bar.classList.add("bar");
+        }
+        
         bar.id = "bar" + i;
         bar.style.width = parseInt(num) + 'px';
         board.appendChild(bar);
