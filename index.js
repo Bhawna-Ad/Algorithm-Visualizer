@@ -8,7 +8,6 @@ arrays();
 
 slider.oninput = function() {
     array_length = this.value;
-    output.innerHTML = this.value;
     arrays();
 }
 
