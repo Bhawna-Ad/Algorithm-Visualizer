@@ -21,6 +21,8 @@ document.getElementById("insertionSort").addEventListener("click", insertionSort
 document.getElementById("cyclicSort").addEventListener("click", cyclicSort);
 document.getElementById("mergeSort").addEventListener("click", mergeSort);
 document.getElementById("quickSort").addEventListener("click", quickSort);
+document.getElementById("compareAll").addEventListener("click", compareAll);
+
 
 //creating the bars
 function arrays() {
@@ -90,6 +92,12 @@ function getMaxIndex(start, end) {
     return max;
 }
 
+function addWait(milisec) {
+    return new Promise(resolve => {
+        setTimeout(() => { resolve('') }, milisec);
+    })
+}
+
 //bubble sorting algorithm
 async function bubbleSort() {
     console.log(sorted);
@@ -105,7 +113,7 @@ async function bubbleSort() {
             div1.style.backgroundColor = 'red';
             div2.style.backgroundColor = 'red';
             //check for this later
-            await new Promise(resolve => setTimeout(() => { resolve(), delay(2) }));
+            await addWait(20);
             //check for the widths in the array and swap the array elements and div elements as well
             if (nums[j] < nums[j - 1]) {
                 swap(div1, div2);
@@ -139,7 +147,7 @@ async function selectionSort() {
         let div2 = document.getElementById('bar' + max);
         div1.style.backgroundColor = 'red';
         div2.style.backgroundColor = 'red';
-        await new Promise(resolve => setTimeout(() => { resolve(), delay(2) }));
+        await addWait(20);
         swap(div1, div2);
         swapArray(last, max);
         div1.style.backgroundColor = 'aqua';
@@ -160,7 +168,7 @@ async function insertionSort() {
             let div2 = document.getElementById('bar' + (j - 1));
             div1.style.backgroundColor = 'red';
             div2.style.backgroundColor = 'red';
-            await new Promise(resolve => setTimeout(() => { resolve(), delay(2) }));
+            await addWait(20);
             if (nums[j] < nums[j - 1]) {
                 swap(div1, div2);
                 swapArray(j, j - 1);
@@ -190,7 +198,7 @@ async function cyclicSort() {
     board.innerHTML = "";
     var len = 0;
     while(len < 100) {
-        //take the range of random numbers between 900 to 999
+        //take the range of random numbers between 0 to 990 with a gap of 10
         var num = 10 * parseInt(Math.random()*100);
         if(nums.indexOf(num) != -1) {
             continue;
@@ -200,10 +208,12 @@ async function cyclicSort() {
         bar.id = "bar" + len;
         bar.style.width = num + 'px';
         board.appendChild(bar);
+        await addWait(20);
         nums.push(num);
         len++;
     }
     console.log(nums);
+
 
     var i = 0;
     while(i<array_length) {
@@ -212,7 +222,7 @@ async function cyclicSort() {
         var div2 = document.getElementById('bar'+index);
         div1.style.backgroundColor = 'red';
         div2.style.backgroundColor = 'red';
-        await new Promise(resolve => setTimeout(() => { resolve(), delay(2) }));
+        await addWait(20);
         if(nums[i] != nums[index]) {
             swapArray(i, index);
             swap(div1, div2);
@@ -228,6 +238,7 @@ async function cyclicSort() {
 }
 
 //add wait time
+//check for the bug in here
 function mergeSort() {
     if (sorted === true) {
         alert("Already Sorted!");
@@ -258,7 +269,7 @@ async function merge(arr, left, mid, right) {
     var k = left;
 
     while(i<n1 && j<n2) {
-        divElement = document.getElementById('bar'+k);
+        divElement = document.getElementById('bar'+ k);
         divElement.style.backgroundColor = 'red';
 
         if(leftArray[i] <= rightArray[j]) {
@@ -339,7 +350,7 @@ async function quickSort_helper(low, high) {
         div1.style.backgroundColor = 'red';
         div2.style.backgroundColor = 'red';
 
-        await new Promise(resolve => setTimeout(() => { resolve(), delay(2) }));
+        await addWait(20);
 
 
         if(start <= end) {
