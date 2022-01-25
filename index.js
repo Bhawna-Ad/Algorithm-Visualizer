@@ -12,6 +12,14 @@ slider.oninput = function() {
 }
 
 
+var speed_slider = document.getElementById('speed_slider');
+var waitTime = 1000 - (10*speed_slider.value);
+
+speed_slider.oninput = function() {
+    waitTime = 1000 - (10*this.value);
+}
+
+
 
 //adding eventListeners to the buttons
 document.getElementById("array").addEventListener("click", arrays);
@@ -113,7 +121,7 @@ async function bubbleSort() {
             div1.style.backgroundColor = 'red';
             div2.style.backgroundColor = 'red';
             //check for this later
-            await addWait(20);
+            await addWait(waitTime);
             //check for the widths in the array and swap the array elements and div elements as well
             if (nums[j] < nums[j - 1]) {
                 swap(div1, div2);
@@ -147,7 +155,7 @@ async function selectionSort() {
         let div2 = document.getElementById('bar' + max);
         div1.style.backgroundColor = 'red';
         div2.style.backgroundColor = 'red';
-        await addWait(20);
+        await addWait(waitTime);
         swap(div1, div2);
         swapArray(last, max);
         div1.style.backgroundColor = 'aqua';
@@ -168,7 +176,7 @@ async function insertionSort() {
             let div2 = document.getElementById('bar' + (j - 1));
             div1.style.backgroundColor = 'red';
             div2.style.backgroundColor = 'red';
-            await addWait(20);
+            await addWait(waitTime);
             if (nums[j] < nums[j - 1]) {
                 swap(div1, div2);
                 swapArray(j, j - 1);
@@ -208,7 +216,7 @@ async function cyclicSort() {
         bar.id = "bar" + len;
         bar.style.width = num + 'px';
         board.appendChild(bar);
-        await addWait(20);
+        await addWait(2);
         nums.push(num);
         len++;
     }
@@ -222,7 +230,7 @@ async function cyclicSort() {
         var div2 = document.getElementById('bar'+index);
         div1.style.backgroundColor = 'red';
         div2.style.backgroundColor = 'red';
-        await addWait(20);
+        await addWait(waitTime);
         if(nums[i] != nums[index]) {
             swapArray(i, index);
             swap(div1, div2);
@@ -350,7 +358,7 @@ async function quickSort_helper(low, high) {
         div1.style.backgroundColor = 'red';
         div2.style.backgroundColor = 'red';
 
-        await addWait(20);
+        await addWait(waitTime);
 
 
         if(start <= end) {
