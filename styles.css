@@ -29,3 +29,17 @@
 }
 
 
+.col {
+    height: 300px;
+    width: 300px;
+    background-color: aliceblue;
+    display: inline-block;
+    margin: 0 2px 0;
+}
+
+.compareBar {
+    height: 5px;
+    background-color: bisque;
+    margin: 1px;
+}
+
