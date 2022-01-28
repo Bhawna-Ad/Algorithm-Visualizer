@@ -4,6 +4,7 @@ import { insertionSort } from "./algorithms/insertionSort";
 import { cyclicSort } from "./algorithms/cyclicSort";
 import { mergeSort } from "./algorithms/mergeSort";
 import { quickSort } from "./algorithms/quickSort";
+import { compareAll } from "./compare/compareAllAlgorithms";
 
 
 //global arrray to get accessed by other functions

@@ -525,6 +525,7 @@ var _insertionSort = require("./algorithms/insertionSort");
 var _cyclicSort = require("./algorithms/cyclicSort");
 var _mergeSort = require("./algorithms/mergeSort");
 var _quickSort = require("./algorithms/quickSort");
+var _compareAllAlgorithms = require("./compare/compareAllAlgorithms");
 //global arrray to get accessed by other functions
 var nums = [];
 var sorted = new Boolean(false);
@@ -550,7 +551,7 @@ document.getElementById("insertionSort").addEventListener("click", callForInsert
 document.getElementById("cyclicSort").addEventListener("click", callForCyclicSort);
 document.getElementById("mergeSort").addEventListener("click", callForMergeSort);
 document.getElementById("quickSort").addEventListener("click", callForQuickSort);
-document.getElementById("compareAll").addEventListener("click", compareAll);
+document.getElementById("compareAll").addEventListener("click", _compareAllAlgorithms.compareAll);
 //creating the bars
 function arrays() {
     console.clear();
@@ -641,7 +642,7 @@ function callForQuickSort() {
     sorted = true;
 }
 
-},{"./algorithms/bubbleSort":"cLFZ1","./algorithms/selectionSort":"6SzgW","./algorithms/insertionSort":"RcfXM","./algorithms/cyclicSort":"02XYl","./algorithms/mergeSort":"fSdla","./algorithms/quickSort":"AJhuu"}],"cLFZ1":[function(require,module,exports) {
+},{"./algorithms/bubbleSort":"cLFZ1","./algorithms/selectionSort":"6SzgW","./algorithms/insertionSort":"RcfXM","./algorithms/cyclicSort":"02XYl","./algorithms/mergeSort":"fSdla","./algorithms/quickSort":"AJhuu","./compare/compareAllAlgorithms":"iIcC5"}],"cLFZ1":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "bubbleSort", ()=>bubbleSort
@@ -670,37 +671,7 @@ async function bubbleSort(nums, waitTime) {
     console.log(nums);
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./utils":"dSdlv"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"dSdlv":[function(require,module,exports) {
+},{"./utils":"dSdlv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dSdlv":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "swap", ()=>swap
@@ -741,7 +712,37 @@ function addWait(milisec) {
     });
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6SzgW":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"6SzgW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "selectionSort", ()=>selectionSort
@@ -930,6 +931,328 @@ async function quickSort_helper(nums, low, high, waitTime) {
     if (start < high) quickSort_helper(nums, start, high, waitTime);
 }
 
-},{"./utils":"dSdlv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["iIB5e","1l7bB"], "1l7bB", "parcelRequire355e")
+},{"./utils":"dSdlv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iIcC5":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "compareAll", ()=>compareAll
+);
+var _bubbleSort = require("./compareAlgorithms/bubbleSort");
+var _selectionSort = require("./compareAlgorithms/selectionSort");
+var _insertionSort = require("./compareAlgorithms/insertionSort");
+var _cyclicSort = require("./compareAlgorithms/cyclicSort");
+var _mergeSort = require("./compareAlgorithms/mergeSort");
+var _quickSort = require("./compareAlgorithms/quickSort");
+var arr_length = 50;
+var time = 100;
+var compareArray = [];
+function compareAll() {
+    var board = document.getElementById('board');
+    board.innerHTML = "";
+    var index = 1;
+    for(var row = 0; row < 2; row++){
+        var rowDiv = document.createElement('div');
+        for(var col = 0; col < 3; col++){
+            var cell = document.createElement('div');
+            cell.classList.add('col');
+            cell.id = 'cell' + index;
+            index++;
+            rowDiv.appendChild(cell);
+        }
+        board.appendChild(rowDiv);
+    }
+    for(var i = 0; i < arr_length; i++)compareArray.push(parseInt(Math.random() * 300));
+    for(var cell_no = 0; cell_no < 6; cell_no++){
+        index = 0;
+        var cell = document.getElementById('cell' + (cell_no + 1));
+        for(var bar_no = 0; bar_no < arr_length; bar_no++){
+            var bar = document.createElement('div');
+            bar.classList.add('compareBar');
+            bar.id = 'compareBar' + cell_no + '-' + bar_no;
+            bar.style.width = compareArray[index] + 'px';
+            index++;
+            cell.appendChild(bar);
+        }
+    }
+    console.log(compareArray);
+    _bubbleSort.bubbleSort(compareArray, time);
+    _selectionSort.selectionSort(compareArray, time);
+    _insertionSort.insertionSort(compareArray, time);
+    _cyclicSort.cyclicSort(time);
+    _mergeSort.mergeSort(compareArray, time);
+    _quickSort.quickSort(compareArray, time);
+}
+
+},{"./compareAlgorithms/bubbleSort":"37bny","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./compareAlgorithms/selectionSort":"jBqYV","./compareAlgorithms/insertionSort":"97EXv","./compareAlgorithms/cyclicSort":"1KmTR","./compareAlgorithms/mergeSort":"lsEqT","./compareAlgorithms/quickSort":"4reUW"}],"37bny":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "bubbleSort", ()=>bubbleSort
+);
+var _compareUtils = require("./compareUtils");
+//cell number 0
+async function bubbleSort(nums, time) {
+    var arr = _compareUtils.getArray(nums);
+    for(let i = 0; i < arr.length; i++){
+        let swapped = new Boolean(false);
+        for(let j = 1; j < arr.length - i; j++){
+            let div1 = document.getElementById("compareBar0-" + j);
+            let div2 = document.getElementById("compareBar0-" + (j - 1));
+            div1.style.backgroundColor = 'red';
+            div2.style.backgroundColor = 'red';
+            //check for this later
+            await _compareUtils.addWait(time);
+            //check for the widths in the array and swap the array elements and div elements as well
+            if (arr[j] < arr[j - 1]) {
+                _compareUtils.swap(div1, div2);
+                _compareUtils.swapArray(arr, j, j - 1);
+                swapped = true;
+            }
+            div1.style.backgroundColor = 'aqua';
+            div2.style.backgroundColor = 'aqua';
+            if (!swapped) break;
+        }
+    }
+    console.log(arr);
+}
+
+},{"./compareUtils":"9rjWT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9rjWT":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getArray", ()=>getArray
+);
+parcelHelpers.export(exports, "addWait", ()=>addWait
+);
+parcelHelpers.export(exports, "swap", ()=>swap
+);
+parcelHelpers.export(exports, "swapArray", ()=>swapArray
+);
+parcelHelpers.export(exports, "getMaxIndex", ()=>getMaxIndex
+);
+//return a new copy of the array
+function getArray(compareArray) {
+    return compareArray.slice(0);
+}
+//adding waiting time in algorithms
+function addWait(milisec) {
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve('');
+        }, milisec);
+    });
+}
+//swapping the styles of two elements
+function swap(element1, element2) {
+    const style1 = window.getComputedStyle(element1);
+    const style2 = window.getComputedStyle(element2);
+    const newStyle1 = style1.getPropertyValue("width");
+    const newStyle2 = style2.getPropertyValue("width");
+    element1.style.width = newStyle2;
+    element2.style.width = newStyle1;
+}
+//function to swap elements of array
+function swapArray(arr, first, second) {
+    var temp = arr[first];
+    arr[first] = arr[second];
+    arr[second] = temp;
+}
+//function to get the maximum index
+function getMaxIndex(arr, start, end) {
+    var max = start;
+    for(var i = start; i <= end; i++)if (arr[max] < arr[i]) max = i;
+    return max;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jBqYV":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "selectionSort", ()=>selectionSort
+);
+var _compareUtils = require("./compareUtils");
+//cell number 1
+async function selectionSort(nums, time) {
+    var arr = _compareUtils.getArray(nums);
+    for(var i = 0; i < arr.length; i++){
+        var last = arr.length - 1 - i;
+        var max = _compareUtils.getMaxIndex(arr, 0, last);
+        let div1 = document.getElementById("compareBar1-" + last);
+        let div2 = document.getElementById("compareBar1-" + max);
+        div1.style.backgroundColor = 'red';
+        div2.style.backgroundColor = 'red';
+        await _compareUtils.addWait(time);
+        _compareUtils.swap(div1, div2);
+        _compareUtils.swapArray(arr, last, max);
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
+    }
+}
+
+},{"./compareUtils":"9rjWT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"97EXv":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "insertionSort", ()=>insertionSort
+);
+var _compareUtils = require("./compareUtils");
+//cell number 2
+async function insertionSort(nums, time) {
+    var arr = _compareUtils.getArray(nums);
+    for(var i = 0; i < arr.length - 1; i++)for(var j = i + 1; j > 0; j--){
+        let div1 = document.getElementById("compareBar2-" + j);
+        let div2 = document.getElementById("compareBar2-" + (j - 1));
+        div1.style.backgroundColor = 'red';
+        div2.style.backgroundColor = 'red';
+        await _compareUtils.addWait(time);
+        if (arr[j] < arr[j - 1]) {
+            _compareUtils.swap(div1, div2);
+            _compareUtils.swapArray(arr, j, j - 1);
+            div1.style.backgroundColor = 'aqua';
+            div2.style.backgroundColor = 'aqua';
+        } else {
+            div1.style.backgroundColor = 'aqua';
+            div2.style.backgroundColor = 'aqua';
+            break;
+        }
+    }
+}
+
+},{"./compareUtils":"9rjWT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1KmTR":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "cyclicSort", ()=>cyclicSort
+);
+var _compareUtils = require("./compareUtils");
+//cell number 3
+async function cyclicSort(time) {
+    var arr = [];
+    var cell = document.getElementById('cell4');
+    cell.innerHTML = "";
+    var len = 0;
+    while(len < 50){
+        //take the range of random numbers between 900 to 999
+        var num = 6 * parseInt(Math.random() * 50);
+        if (arr.indexOf(num) != -1) continue;
+        var bar = document.createElement('div');
+        bar.classList.add("compareBar");
+        bar.id = "compareBar3-" + len;
+        bar.style.width = num + 'px';
+        cell.appendChild(bar);
+        arr.push(num);
+        len++;
+    }
+    var i = 0;
+    while(i < 50){
+        var index = arr[i] / 6;
+        var div1 = document.getElementById("compareBar3-" + i);
+        var div2 = document.getElementById("compareBar3-" + index);
+        div1.style.backgroundColor = 'red';
+        div2.style.backgroundColor = 'red';
+        await _compareUtils.addWait(time);
+        if (arr[i] != arr[index]) {
+            _compareUtils.swapArray(arr, i, index);
+            _compareUtils.swap(div1, div2);
+        } else i++;
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
+    }
+    console.log(arr);
+}
+
+},{"./compareUtils":"9rjWT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lsEqT":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "mergeSort", ()=>mergeSort
+);
+var _compareUtils = require("./compareUtils");
+//cell number 4
+function mergeSort(nums, time) {
+    var arr = _compareUtils.getArray(nums);
+    mergeSort_helper(arr, 0, arr.length);
+}
+async function merge(arr, left, mid, right) {
+    var n1 = mid - left + 1;
+    var n2 = right - mid;
+    var leftArray = new Array(n1);
+    var rightArray = new Array(n2);
+    for(var i = 0; i < n1; i++)leftArray[i] = arr[left + i];
+    for(var i = 0; i < n2; i++)rightArray[i] = arr[mid + 1 + i];
+    var i = 0;
+    var j = 0;
+    var k = left;
+    while(i < n1 && j < n2){
+        divElement = document.getElementById("compareBar4-" + k);
+        divElement.style.backgroundColor = 'red';
+        if (leftArray[i] <= rightArray[j]) {
+            divElement.style.width = leftArray[i] + 'px';
+            arr[k] = leftArray[i];
+            i++;
+        } else {
+            divElement.style.width = rightArray[j] + 'px';
+            arr[k] = rightArray[j];
+            j++;
+        }
+        k++;
+        divElement.style.backgroundColor = 'aqua';
+    }
+    while(i < n1){
+        divElement.style.backgroundColor = 'red';
+        divElement.style.width = leftArray[i] + 'px';
+        arr[k] = leftArray[i];
+        i++;
+        k++;
+        divElement.style.backgroundColor = 'aqua';
+    }
+    while(j < n2){
+        divElement.style.backgroundColor = 'red';
+        divElement.width = rightArray[j] + 'px';
+        arr[k] = rightArray[j];
+        j++;
+        k++;
+        divElement.style.backgroundColor = 'aqua';
+    }
+}
+function mergeSort_helper(arr, left, right) {
+    if (left >= right) return;
+    var mid = left + parseInt((right - left) / 2);
+    mergeSort_helper(arr, left, mid);
+    mergeSort_helper(arr, mid + 1, right);
+    merge(arr, left, mid, right);
+}
+
+},{"./compareUtils":"9rjWT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4reUW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "quickSort", ()=>quickSort
+);
+var _compareUtils = require("./compareUtils");
+//cell number 5
+function quickSort(nums, time) {
+    var arr = _compareUtils.getArray(nums);
+    quickSort_helper(arr, 0, arr.length - 1, time);
+}
+async function quickSort_helper(arr, low, high, time) {
+    var start = low;
+    var end = high;
+    var mid = parseInt(low + (high - low) / 2);
+    var pivot = arr[mid];
+    while(start <= end){
+        while(arr[start] < pivot)start++;
+        while(arr[end] > pivot)end--;
+        var div1 = document.getElementById("compareBar5-" + start);
+        var div2 = document.getElementById("compareBar5-" + end);
+        div1.style.backgroundColor = 'red';
+        div2.style.backgroundColor = 'red';
+        await _compareUtils.addWait(time);
+        if (start <= end) {
+            _compareUtils.swapArray(arr, start, end);
+            _compareUtils.swap(div1, div2);
+            start++;
+            end--;
+        }
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
+    }
+    if (low < end) quickSort_helper(arr, low, end, time);
+    if (start < high) quickSort_helper(arr, start, high, time);
+}
+
+},{"./compareUtils":"9rjWT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["iIB5e","1l7bB"], "1l7bB", "parcelRequire355e")
 
 //# sourceMappingURL=index.cb43b74a.js.map
