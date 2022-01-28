@@ -6,7 +6,6 @@ import { addWait } from "./utils";
 //quick sort
 function quickSort(nums, waitTime) {
     quickSort_helper(nums, 0, nums.length -1, waitTime);
-    console.log(nums);
 }
 
 async function quickSort_helper(nums, low, high, waitTime) {

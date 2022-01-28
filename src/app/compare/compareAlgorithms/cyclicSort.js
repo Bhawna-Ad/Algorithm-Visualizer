@@ -41,7 +41,6 @@ async function cyclicSort(time) {
         div1.style.backgroundColor = 'aqua';
         div2.style.backgroundColor = 'aqua';
     }
-    console.log(arr);
 }
 
 export {cyclicSort};

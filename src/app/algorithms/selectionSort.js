@@ -17,7 +17,6 @@ async function selectionSort(nums, waitTime) {
         div1.style.backgroundColor = 'aqua';
         div2.style.backgroundColor = 'aqua';
     }
-    console.log(nums);
 }
 
 export {selectionSort};

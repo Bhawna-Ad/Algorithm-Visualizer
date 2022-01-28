@@ -26,7 +26,6 @@ async function bubbleSort(nums, waitTime) {
 
         }
     }
-    console.log(nums);
 }
 
 export {bubbleSort};

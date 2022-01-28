@@ -29,7 +29,6 @@ async function bubbleSort(nums, time) {
 
         }
     }
-    console.log(arr);
 }
 
 

@@ -668,7 +668,6 @@ async function bubbleSort(nums, waitTime) {
             if (!swapped) break;
         }
     }
-    console.log(nums);
 }
 
 },{"./utils":"dSdlv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dSdlv":[function(require,module,exports) {
@@ -762,7 +761,6 @@ async function selectionSort(nums, waitTime) {
         div1.style.backgroundColor = 'aqua';
         div2.style.backgroundColor = 'aqua';
     }
-    console.log(nums);
 }
 
 },{"./utils":"dSdlv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"RcfXM":[function(require,module,exports) {
@@ -789,7 +787,6 @@ async function insertionSort(nums, waitTime) {
             break;
         }
     }
-    console.log(nums);
 }
 
 },{"./utils":"dSdlv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"02XYl":[function(require,module,exports) {
@@ -832,7 +829,6 @@ async function cyclicSort(array_length, waitTime) {
         div1.style.backgroundColor = 'aqua';
         div2.style.backgroundColor = 'aqua';
     }
-    console.log(nums);
 }
 
 },{"./utils":"dSdlv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fSdla":[function(require,module,exports) {
@@ -842,7 +838,6 @@ parcelHelpers.export(exports, "mergeSort", ()=>mergeSort
 );
 function mergeSort(nums, addWait) {
     mergeSort_helper(nums, 0, nums.length);
-    console.log(nums);
 }
 async function merge(arr, left, mid, right) {
     var n1 = mid - left + 1;
@@ -903,7 +898,6 @@ var _utils = require("./utils");
 //quick sort
 function quickSort(nums, waitTime) {
     quickSort_helper(nums, 0, nums.length - 1, waitTime);
-    console.log(nums);
 }
 async function quickSort_helper(nums, low, high, waitTime) {
     var start = low;
@@ -1011,7 +1005,6 @@ async function bubbleSort(nums, time) {
             if (!swapped) break;
         }
     }
-    console.log(arr);
 }
 
 },{"./compareUtils":"9rjWT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9rjWT":[function(require,module,exports) {
@@ -1152,7 +1145,6 @@ async function cyclicSort(time) {
         div1.style.backgroundColor = 'aqua';
         div2.style.backgroundColor = 'aqua';
     }
-    console.log(arr);
 }
 
 },{"./compareUtils":"9rjWT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lsEqT":[function(require,module,exports) {

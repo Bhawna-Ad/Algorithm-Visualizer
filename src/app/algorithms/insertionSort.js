@@ -24,7 +24,6 @@ async function insertionSort(nums, waitTime) {
         }
 
     }
-    console.log(nums);
 }
 
 export {insertionSort};

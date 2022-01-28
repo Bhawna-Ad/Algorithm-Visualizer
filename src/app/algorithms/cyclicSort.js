@@ -43,7 +43,6 @@ async function cyclicSort(array_length, waitTime) {
         div1.style.backgroundColor = 'aqua';
         div2.style.backgroundColor = 'aqua';
     }
-    console.log(nums);
 }
 
 export {cyclicSort};

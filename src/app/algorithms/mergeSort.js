@@ -1,6 +1,5 @@
 function mergeSort(nums, addWait) {
     mergeSort_helper(nums, 0, nums.length);
-    console.log(nums);
 }
 
 async function merge(arr, left, mid, right) {
