@@ -1,0 +1,23 @@
+{
+  "name": "sorting_visualizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bhawna-Ad/Algorithm-Visualizer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bhawna-Ad/Algorithm-Visualizer/issues"
+  },
+  "homepage": "https://github.com/Bhawna-Ad/Algorithm-Visualizer#readme",
+  "devDependencies": {
+    "parcel": "^2.2.1"
+  }
+}
