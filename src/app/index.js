@@ -5,11 +5,13 @@ import { cyclicSort } from "./algorithms/cyclicSort";
 import { mergeSort } from "./algorithms/mergeSort";
 import { quickSort } from "./algorithms/quickSort";
 import { compareAll } from "./compare/compareAllAlgorithms";
+import { createBoard } from "./algorithms/cyclicSort";
 
 
 //global arrray to get accessed by other functions
 var nums = [];
 var sorted = new Boolean(false);
+var currentAlgorithm;
 
 //slider to change length of the array
 var slider = document.getElementById('array_slider');
@@ -34,12 +36,36 @@ speed_slider.oninput = function() {
 
 //adding eventListeners to the buttons
 document.getElementById("array").addEventListener("click", arrays);
-document.getElementById("bubbleSort").addEventListener("click", callForBubbleSort);
-document.getElementById("selectionSort").addEventListener("click", callForSelectionSort);
-document.getElementById("insertionSort").addEventListener("click", callForInsertionSort);
-document.getElementById("cyclicSort").addEventListener("click", callForCyclicSort);
-document.getElementById("mergeSort").addEventListener("click", callForMergeSort);
-document.getElementById("quickSort").addEventListener("click", callForQuickSort);
+//add onclick... change currentalgorithm.... add eventlistener on sort button
+// document.getElementById("bubbleSort").addEventListener("click", callForBubbleSort);
+document.getElementById("bubbleSort").onclick = () => {
+    currentAlgorithm = "Bubble Sort";
+    document.getElementById("dropdownMenuButton").innerHTML = currentAlgorithm;
+}
+
+document.getElementById("selectionSort").onclick = () => {
+    currentAlgorithm = "Selection Sort";
+    document.getElementById("dropdownMenuButton").innerHTML = currentAlgorithm;
+}
+document.getElementById("insertionSort").onclick = () => {
+    currentAlgorithm = "Insertion Sort";
+    document.getElementById("dropdownMenuButton").innerHTML = currentAlgorithm;
+}
+document.getElementById("cyclicSort").onclick = () => {
+    currentAlgorithm = "Cyclic Sort";
+    document.getElementById("dropdownMenuButton").innerHTML = currentAlgorithm;
+    createBoard();
+}
+document.getElementById("mergeSort").onclick = () => {
+    currentAlgorithm = "Merge Sort";
+    document.getElementById("dropdownMenuButton").innerHTML = currentAlgorithm;
+}
+document.getElementById("quickSort").onclick = () => {
+    currentAlgorithm = "Quick Sort";
+    document.getElementById("dropdownMenuButton").innerHTML = currentAlgorithm;
+}
+
+document.getElementById("sortbtn").addEventListener("click", sortArray);
 document.getElementById("compareAll").addEventListener("click", compareAll);
 
 
@@ -81,6 +107,29 @@ function arrays() {
     console.log(nums);
 }
 
+
+function sortArray() {
+    switch(currentAlgorithm) {
+        case "Bubble Sort":
+          callForBubbleSort();
+          break;
+        case "Selection Sort":
+          callForInsertionSort();
+          break;
+        case "Insertion Sort":
+          callForSelectionSort();
+          break;
+        case "Cyclic Sort":
+          callForCyclicSort();
+          break;
+        case "Merge Sort":
+          callForMergeSort();
+          break;
+        case "Quick Sort":
+          callForQuickSort();
+          break;
+      }
+}
 
 //bubble sorting algorithm
 async function callForBubbleSort() {

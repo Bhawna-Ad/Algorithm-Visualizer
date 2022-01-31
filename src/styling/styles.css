@@ -28,6 +28,9 @@
     margin: 2px;
 }
 
+.board_container {
+    width: 1200px;
+}
 
 .col {
     height: 300px;
@@ -42,4 +45,13 @@
     background-color: bisque;
     margin: 1px;
 }
+
+.parent {
+    display: inline-flex;
+}
+
+.toolbar_container {
+    width: 200px;
+}
+
 

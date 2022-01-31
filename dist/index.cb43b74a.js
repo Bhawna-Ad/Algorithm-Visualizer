@@ -529,6 +529,7 @@ var _compareAllAlgorithms = require("./compare/compareAllAlgorithms");
 //global arrray to get accessed by other functions
 var nums = [];
 var sorted = new Boolean(false);
+var currentAlgorithm;
 //slider to change length of the array
 var slider = document.getElementById('array_slider');
 var array_length = slider.value;
@@ -545,12 +546,34 @@ speed_slider.oninput = function() {
 };
 //adding eventListeners to the buttons
 document.getElementById("array").addEventListener("click", arrays);
-document.getElementById("bubbleSort").addEventListener("click", callForBubbleSort);
-document.getElementById("selectionSort").addEventListener("click", callForSelectionSort);
-document.getElementById("insertionSort").addEventListener("click", callForInsertionSort);
-document.getElementById("cyclicSort").addEventListener("click", callForCyclicSort);
-document.getElementById("mergeSort").addEventListener("click", callForMergeSort);
-document.getElementById("quickSort").addEventListener("click", callForQuickSort);
+//add onclick... change currentalgorithm.... add eventlistener on sort button
+// document.getElementById("bubbleSort").addEventListener("click", callForBubbleSort);
+document.getElementById("bubbleSort").onclick = ()=>{
+    currentAlgorithm = "Bubble Sort";
+    document.getElementById("dropdownMenuButton").innerHTML = currentAlgorithm;
+};
+document.getElementById("selectionSort").onclick = ()=>{
+    currentAlgorithm = "Selection Sort";
+    document.getElementById("dropdownMenuButton").innerHTML = currentAlgorithm;
+};
+document.getElementById("insertionSort").onclick = ()=>{
+    currentAlgorithm = "Insertion Sort";
+    document.getElementById("dropdownMenuButton").innerHTML = currentAlgorithm;
+};
+document.getElementById("cyclicSort").onclick = ()=>{
+    currentAlgorithm = "Cyclic Sort";
+    document.getElementById("dropdownMenuButton").innerHTML = currentAlgorithm;
+    _cyclicSort.createBoard();
+};
+document.getElementById("mergeSort").onclick = ()=>{
+    currentAlgorithm = "Merge Sort";
+    document.getElementById("dropdownMenuButton").innerHTML = currentAlgorithm;
+};
+document.getElementById("quickSort").onclick = ()=>{
+    currentAlgorithm = "Quick Sort";
+    document.getElementById("dropdownMenuButton").innerHTML = currentAlgorithm;
+};
+document.getElementById("sortbtn").addEventListener("click", sortArray);
 document.getElementById("compareAll").addEventListener("click", _compareAllAlgorithms.compareAll);
 //creating the bars
 function arrays() {
@@ -577,6 +600,28 @@ function arrays() {
         board.appendChild(bar);
     }
     console.log(nums);
+}
+function sortArray() {
+    switch(currentAlgorithm){
+        case "Bubble Sort":
+            callForBubbleSort();
+            break;
+        case "Selection Sort":
+            callForInsertionSort();
+            break;
+        case "Insertion Sort":
+            callForSelectionSort();
+            break;
+        case "Cyclic Sort":
+            callForCyclicSort();
+            break;
+        case "Merge Sort":
+            callForMergeSort();
+            break;
+        case "Quick Sort":
+            callForQuickSort();
+            break;
+    }
 }
 //bubble sorting algorithm
 async function callForBubbleSort() {
@@ -794,9 +839,11 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "cyclicSort", ()=>cyclicSort
 );
+parcelHelpers.export(exports, "createBoard", ()=>createBoard
+);
 var _utils = require("./utils");
-async function cyclicSort(array_length, waitTime) {
-    var nums = [];
+var nums = [];
+async function createBoard() {
     var board = document.getElementById('board');
     board.innerHTML = "";
     var len = 0;
@@ -814,6 +861,8 @@ async function cyclicSort(array_length, waitTime) {
         len++;
     }
     console.log(nums);
+}
+async function cyclicSort(array_length, waitTime) {
     var i = 0;
     while(i < array_length){
         var index = nums[i] / 10;
@@ -976,7 +1025,7 @@ function compareAll() {
     _quickSort.quickSort(compareArray, time);
 }
 
-},{"./compareAlgorithms/bubbleSort":"37bny","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./compareAlgorithms/selectionSort":"jBqYV","./compareAlgorithms/insertionSort":"97EXv","./compareAlgorithms/cyclicSort":"1KmTR","./compareAlgorithms/mergeSort":"lsEqT","./compareAlgorithms/quickSort":"4reUW"}],"37bny":[function(require,module,exports) {
+},{"./compareAlgorithms/bubbleSort":"37bny","./compareAlgorithms/selectionSort":"jBqYV","./compareAlgorithms/insertionSort":"97EXv","./compareAlgorithms/cyclicSort":"1KmTR","./compareAlgorithms/mergeSort":"lsEqT","./compareAlgorithms/quickSort":"4reUW","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"37bny":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "bubbleSort", ()=>bubbleSort

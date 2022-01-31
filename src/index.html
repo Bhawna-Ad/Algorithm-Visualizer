@@ -19,27 +19,50 @@
 
 <body>
 
-    <h1>Sorting Visualizer</h1>
     <div>
-        <button id="array" class="btn btn-dark">Random Array</button>
-        <button id="bubbleSort" class="btn btn-dark">Bubble Sort</button>
-        <button id="selectionSort" class="btn btn-dark">Selection Sort</button>
-        <button id="insertionSort" class="btn btn-dark">Insertion Sort</button>
-        <button id="cyclicSort" class="btn btn-dark">Cyclic Sort</button>
-        <button id="mergeSort" class="btn btn-dark">Merge Sort</button>
-        <button id="quickSort" class="btn btn-dark">Quick Sort</button>
-        <button id="compareAll" class="btn btn-dark">Compare All</button>
-
-        <span>
-            <input id="array_slider" type="range" max="120" min="20" step="1" value="100">
-        </span>
-
-        <span>
-            <input id="speed_slider" type="range" max="100" min="0" step="1" value="98">
-        </span>
+        <h1>Sorting Visualizer</h1>
     </div>
 
-    <div id="board"></div>
+
+    
+
+    <div class="parent">
+        <div class="board_container" id="board"></div>
+        <div class="toolbar_container" id="toolbar">
+            <div><button id="array" class="btn btn-dark">Random Array</button></div>
+            <div>
+                <span>Array Size
+                    <input id="array_slider" type="range" max="120" min="20" step="1" value="100">
+                </span>
+            </div>
+            
+            <div>
+                <span>   Speed
+                    <input id="speed_slider" type="range" max="100" min="0" step="1" value="98">
+                </span>
+            </div>
+    
+            <div class="btn-group">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  Algorithms
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" id="bubbleSort">Bubble Sort</a></li>
+                  <li><a class="dropdown-item" href="#" id="selectionSort">Selection Sort</a></li>
+                  <li><a class="dropdown-item" href="#" id="insertionSort">Insertion Sort</a></li>
+                  <li><a class="dropdown-item" href="#" id="cyclicSort">Cyclic Sort</a></li>
+                  <li><a class="dropdown-item" href="#" id="mergeSort">Merge Sort</a></li>
+                  <li><a class="dropdown-item" href="#" id="quickSort">Quick Sort</a></li>
+                </ul>
+              </div>
+
+            <div><button id="sortbtn" class="btn btn-dark">Sort!</button></div>
+            <div><button id="compareAll" class="btn btn-dark">Compare All</button></div>
+            
+
+        </div>
+    </div>
+    
 
     <!-- Javascript -->
     <script type="module" src="app/index.js"></script>

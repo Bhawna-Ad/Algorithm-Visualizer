@@ -1,9 +1,8 @@
 import { swapArray } from "./utils";
 import { swap } from "./utils";
 import { addWait } from "./utils";
-
-async function cyclicSort(array_length, waitTime) {
-    var nums = [];
+var nums = [];
+async function createBoard() {
     var board = document.getElementById('board');
     board.innerHTML = "";
     var len = 0;
@@ -25,6 +24,8 @@ async function cyclicSort(array_length, waitTime) {
     console.log(nums);
 
 
+}
+async function cyclicSort(array_length, waitTime) {  
     var i = 0;
     while(i<array_length) {
         var index = nums[i]/10;
@@ -45,4 +46,4 @@ async function cyclicSort(array_length, waitTime) {
     }
 }
 
-export {cyclicSort};
+export {cyclicSort, createBoard};
