@@ -10,18 +10,18 @@ async function insertionSort(nums, time) {
         for (var j = i + 1; j > 0; j--) {
             let div1 = document.getElementById('compareBar' +  2 + '-' + j);
             let div2 = document.getElementById('compareBar' +  2 + '-' + (j - 1));
-            div1.style.backgroundColor = 'red';
-            div2.style.backgroundColor = 'red';
+            div1.style.backgroundColor = 'aqua';
+            div2.style.backgroundColor = 'aqua';
             await addWait(time);
             if (arr[j] < arr[j - 1]) {
                 swap(div1, div2);
                 swapArray(arr, j, j - 1);
-                div1.style.backgroundColor = 'aqua';
-                div2.style.backgroundColor = 'aqua';
+                div1.style.backgroundColor = "#FF008C";
+                div2.style.backgroundColor = "#FF008C";
             }
             else {
-                div1.style.backgroundColor = 'aqua';
-                div2.style.backgroundColor = 'aqua';
+                div1.style.backgroundColor = "#FF008C";
+                div2.style.backgroundColor =  "#FF008C";
                 break;
             }
         }

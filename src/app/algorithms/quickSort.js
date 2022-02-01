@@ -1,6 +1,7 @@
 import { swapArray } from "./utils";
 import { swap } from "./utils";
 import { addWait } from "./utils";
+import {disableButtons} from "./utils";
 
 
 //quick sort
@@ -24,8 +25,8 @@ async function quickSort_helper(nums, low, high, waitTime) {
 
         var div1 = document.getElementById('bar'+start);
         var div2 = document.getElementById('bar'+end);
-        div1.style.backgroundColor = 'red';
-        div2.style.backgroundColor = 'red';
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
 
         await addWait(waitTime);
 
@@ -37,8 +38,8 @@ async function quickSort_helper(nums, low, high, waitTime) {
             end--;
         }
 
-        div1.style.backgroundColor = 'aqua';
-        div2.style.backgroundColor = 'aqua';
+        div1.style.backgroundColor = "#FF008C";
+        div2.style.backgroundColor =  "#FF008C";
 
     }
 
@@ -47,6 +48,10 @@ async function quickSort_helper(nums, low, high, waitTime) {
     }
     if(start < high) {
         quickSort_helper(nums, start, high, waitTime);
+    }
+
+    if(start>end) {
+        disableButtons(false);
     }
 }
 

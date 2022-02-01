@@ -1,6 +1,7 @@
 import { swapArray } from "./utils";
 import { swap } from "./utils";
 import { addWait } from "./utils";
+import {disableButtons} from "./utils";
 
 async function bubbleSort(nums, waitTime) {
     for (let i = 0; i < nums.length; i++) {
@@ -8,8 +9,8 @@ async function bubbleSort(nums, waitTime) {
         for (let j = 1; j < nums.length - i; j++) {
             let div1 = document.getElementById('bar' + j);
             let div2 = document.getElementById('bar' + (j - 1));
-            div1.style.backgroundColor = 'red';
-            div2.style.backgroundColor = 'red';
+            div1.style.backgroundColor = 'aqua';
+            div2.style.backgroundColor = 'aqua';
 
             await addWait(waitTime);
             //check for the widths in the array and swap the array elements and div elements as well
@@ -18,14 +19,15 @@ async function bubbleSort(nums, waitTime) {
                 swapArray(nums, j, j - 1);
                 swapped = true;
             }
-            div1.style.backgroundColor = 'aqua';
-            div2.style.backgroundColor = 'aqua';
+            div1.style.backgroundColor = "#FF008C";
+            div2.style.backgroundColor = "#FF008C";
             if (!swapped) {
                 break;
             }
 
         }
     }
+    disableButtons(false);
 }
 
 export {bubbleSort};

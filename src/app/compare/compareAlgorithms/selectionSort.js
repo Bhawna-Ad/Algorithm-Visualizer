@@ -12,13 +12,13 @@ async function selectionSort(nums, time) {
         var max = getMaxIndex(arr, 0, last);
         let div1 = document.getElementById('compareBar' + 1 + '-' + last);
         let div2 = document.getElementById('compareBar' + 1 + '-' + max);
-        div1.style.backgroundColor = 'red';
-        div2.style.backgroundColor = 'red';
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
         await addWait(time);
         swap(div1, div2);
         swapArray(arr, last, max);
-        div1.style.backgroundColor = 'aqua';
-        div2.style.backgroundColor = 'aqua';
+        div1.style.backgroundColor = "#FF008C";
+        div2.style.backgroundColor =  "#FF008C";
     }
 }
 

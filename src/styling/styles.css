@@ -1,49 +1,87 @@
+
+
 .bar {
     height: 5px;
-    background-color: aquamarine;
+    background-color:#0D6EFD;
     margin: 1px;
 }
 
 .bar_size1 {
     height: 25px;
-    background-color: aquamarine;
+    background-color: #0D6EFD;
     margin: 2px;
 }
 
 .bar_size2 {
     height: 15px;
-    background-color: aquamarine;
+    background-color: #0D6EFD;
     margin: 2px;
 }
 
 .bar_size3 {
     height: 10px;
-    background-color: aquamarine;
+    background-color: #0D6EFD;
     margin: 2px;
 }
 
 .bar_size4 {
     height: 8px;
-    background-color: aquamarine;
+    background-color: #0D6EFD;
     margin: 2px;
 }
 
 .board_container {
-    width: 1200px;
+    width: 1222px;
+}
+
+body {
+    background-color: #171C1C;
+    color: white;
+    font-family: "Ubuntu";
+}
+
+.btn {
+    width: 200px;
+    
+}
+
+.btn-group {
+    margin: 20px;
+}
+
+.custom-btn {
+    color: white;
+    background-color: #FF008C;
+    border-color: #FF008C;
 }
 
 .col {
     height: 300px;
     width: 300px;
-    background-color: aliceblue;
+    background: linear-gradient(180deg, #303636, #222A2A);
     display: inline-block;
     margin: 0 2px 0;
 }
 
+.algo-label {
+    width: 300px;
+    height: 10px;
+    margin: 0 2px 0;
+    font-size: 0.75rem;
+    z-index: 4;
+    padding-left: 116px;
+}
+
 .compareBar {
     height: 5px;
-    background-color: bisque;
+    background-color: #0D6EFD;
     margin: 1px;
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    background: linear-gradient(180deg, #303636, #222A2A);
 }
 
 .parent {
@@ -51,7 +89,49 @@
 }
 
 .toolbar_container {
-    width: 200px;
+    width: 310px;
+    height: 630px;
+    align-items: center;
+    padding: 50px;
+    background: #222A2A;
 }
+
+.tools {
+    margin: 20px;
+}
+
+.navbar {
+    padding-bottom: 0.25rem;
+    box-shadow: 0 -8px 16px 16px rgb(0 0 0 / 20%);
+}
+
+.navbar-dark .navbar-brand{
+    color:white;
+    margin-left: 18px;
+}
+
+.navbar-dark .navbar-brand:hover{
+    color:white;
+    margin-left: 18px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+    margin-right: 132px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: white;
+}
+
+.navbar-brand {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+
+
+
+
 
 

@@ -28,8 +28,8 @@ async function cyclicSort(time) {
         var index = arr[i]/6;
         var div1 = document.getElementById("compareBar" + 3 + '-' +i);
         var div2 = document.getElementById("compareBar" + 3 + '-' + index);
-        div1.style.backgroundColor = 'red';
-        div2.style.backgroundColor = 'red';
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
         await addWait(time);
         if(arr[i] != arr[index]) {
             swapArray(arr, i, index);
@@ -38,8 +38,8 @@ async function cyclicSort(time) {
         else {
             i++;
         }
-        div1.style.backgroundColor = 'aqua';
-        div2.style.backgroundColor = 'aqua';
+        div1.style.backgroundColor =  "#FF008C";
+        div2.style.backgroundColor =  "#FF008C";
     }
 }
 

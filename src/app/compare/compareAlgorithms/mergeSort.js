@@ -27,7 +27,7 @@ async function merge(arr, left, mid, right) {
 
     while(i<n1 && j<n2) {
         divElement = document.getElementById("compareBar" + 4 + '-' + k);
-        divElement.style.backgroundColor = 'red';
+        divElement.style.backgroundColor = 'aqua';
         if(leftArray[i] <= rightArray[j]) {
             divElement.style.width = leftArray[i] + 'px';
             arr[k] = leftArray[i];
@@ -39,26 +39,26 @@ async function merge(arr, left, mid, right) {
             j++;
         }
         k++;
-        divElement.style.backgroundColor = 'aqua';
+        divElement.style.backgroundColor = "#FF008C";
 
     }
 
     while(i < n1) {
-        divElement.style.backgroundColor = 'red';
+        divElement.style.backgroundColor = 'aqua';
         divElement.style.width = leftArray[i] + 'px';
         arr[k] = leftArray[i];
         i++;
         k++;
-        divElement.style.backgroundColor = 'aqua';
+        divElement.style.backgroundColor =  "#FF008C";
     }
 
     while(j < n2) {
-        divElement.style.backgroundColor = 'red';
+        divElement.style.backgroundColor = 'aqua';
         divElement.width = rightArray[j] + 'px';
         arr[k] = rightArray[j];
         j++;
         k++;
-        divElement.style.backgroundColor = 'aqua';
+        divElement.style.backgroundColor = "#FF008C";
     }
 }
 

@@ -35,7 +35,14 @@ function addWait(milisec) {
     })
 }
 
-export {swap, swapArray, getMaxIndex, addWait};
+function disableButtons(val) {
+    document.getElementById('array').disabled = val;
+    document.getElementById('array_slider').disabled = val;
+    document.getElementById('speed_slider').disabled = val;
+    document.getElementById('dropdownMenuButton').disabled = val;
+}
+
+export {swap, swapArray, getMaxIndex, addWait, disableButtons};
 
 
 

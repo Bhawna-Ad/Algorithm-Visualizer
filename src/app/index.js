@@ -6,6 +6,7 @@ import { mergeSort } from "./algorithms/mergeSort";
 import { quickSort } from "./algorithms/quickSort";
 import { compareAll } from "./compare/compareAllAlgorithms";
 import { createBoard } from "./algorithms/cyclicSort";
+import { disableButtons } from "./algorithms/utils";
 
 
 //global arrray to get accessed by other functions
@@ -26,18 +27,17 @@ slider.oninput = function() {
 
 //slider to change speed of the sorting algorithm
 var speed_slider = document.getElementById('speed_slider');
-var waitTime = 1000 - (10*speed_slider.value);
+var waitTime = 20 - (2*speed_slider.value);
 
 speed_slider.oninput = function() {
-    waitTime = 1000 - (10*this.value);
+    waitTime = 20 - (2*this.value);
 }
 
 
 
 //adding eventListeners to the buttons
 document.getElementById("array").addEventListener("click", arrays);
-//add onclick... change currentalgorithm.... add eventlistener on sort button
-// document.getElementById("bubbleSort").addEventListener("click", callForBubbleSort);
+
 document.getElementById("bubbleSort").onclick = () => {
     currentAlgorithm = "Bubble Sort";
     document.getElementById("dropdownMenuButton").innerHTML = currentAlgorithm;
@@ -111,21 +111,27 @@ function arrays() {
 function sortArray() {
     switch(currentAlgorithm) {
         case "Bubble Sort":
+          disableButtons(true);
           callForBubbleSort();
           break;
         case "Selection Sort":
+          disableButtons(true);
           callForInsertionSort();
           break;
         case "Insertion Sort":
+          disableButtons(true);
           callForSelectionSort();
           break;
         case "Cyclic Sort":
+          disableButtons(true);
           callForCyclicSort();
           break;
         case "Merge Sort":
+          disableButtons(true);
           callForMergeSort();
           break;
         case "Quick Sort":
+          disableButtons(true);
           callForQuickSort();
           break;
       }
@@ -139,7 +145,6 @@ async function callForBubbleSort() {
     }
 
     bubbleSort(nums, waitTime);
-
     sorted = true;
     console.log(nums);
 }

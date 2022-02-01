@@ -1,6 +1,8 @@
 import { swapArray } from "./utils";
 import { swap } from "./utils";
 import { addWait } from "./utils";
+import {disableButtons} from "./utils";
+
 var nums = [];
 async function createBoard() {
     var board = document.getElementById('board');
@@ -31,8 +33,8 @@ async function cyclicSort(array_length, waitTime) {
         var index = nums[i]/10;
         var div1 = document.getElementById('bar'+i);
         var div2 = document.getElementById('bar'+index);
-        div1.style.backgroundColor = 'red';
-        div2.style.backgroundColor = 'red';
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
         await addWait(waitTime);
         if(nums[i] != nums[index]) {
             swapArray(nums, i, index);
@@ -41,9 +43,10 @@ async function cyclicSort(array_length, waitTime) {
         else {
             i++;
         }
-        div1.style.backgroundColor = 'aqua';
-        div2.style.backgroundColor = 'aqua';
+        div1.style.backgroundColor =  "#FF008C";
+        div2.style.backgroundColor = "#FF008C";
     }
+    disableButtons(false);
 }
 
 export {cyclicSort, createBoard};

@@ -1,5 +1,9 @@
+import {disableButtons} from "./utils";
+
+
 function mergeSort(nums, addWait) {
     mergeSort_helper(nums, 0, nums.length);
+    disableButtons(false);
 }
 
 async function merge(arr, left, mid, right) {
@@ -36,26 +40,26 @@ async function merge(arr, left, mid, right) {
             j++;
         }
         k++;
-        divElement.style.backgroundColor = 'aqua';
+        divElement.style.backgroundColor =  "#FF008C";
 
     }
 
     while(i < n1) {
-        divElement.style.backgroundColor = 'red';
+        divElement.style.backgroundColor = 'aqua';
         divElement.style.width = leftArray[i] + 'px';
         arr[k] = leftArray[i];
         i++;
         k++;
-        divElement.style.backgroundColor = 'aqua';
+        divElement.style.backgroundColor =  "#FF008C";
     }
 
     while(j < n2) {
-        divElement.style.backgroundColor = 'red';
+        divElement.style.backgroundColor = 'aqua';
         divElement.width = rightArray[j] + 'px';
         arr[k] = rightArray[j];
         j++;
         k++;
-        divElement.style.backgroundColor = 'aqua';
+        divElement.style.backgroundColor =  "#FF008C";
     }
 }
 

@@ -25,8 +25,8 @@ async function quickSort_helper(arr, low, high, time) {
 
         var div1 = document.getElementById("compareBar" + 5 + '-' + start);
         var div2 = document.getElementById("compareBar" + 5 + '-' + end);
-        div1.style.backgroundColor = 'red';
-        div2.style.backgroundColor = 'red';
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
 
         await addWait(time);
 
@@ -37,8 +37,8 @@ async function quickSort_helper(arr, low, high, time) {
             end--;
         }
 
-        div1.style.backgroundColor = 'aqua';
-        div2.style.backgroundColor = 'aqua';
+        div1.style.backgroundColor = "#FF008C";
+        div2.style.backgroundColor = "#FF008C";
 
     }
 

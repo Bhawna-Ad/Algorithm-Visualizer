@@ -526,6 +526,7 @@ var _cyclicSort = require("./algorithms/cyclicSort");
 var _mergeSort = require("./algorithms/mergeSort");
 var _quickSort = require("./algorithms/quickSort");
 var _compareAllAlgorithms = require("./compare/compareAllAlgorithms");
+var _utils = require("./algorithms/utils");
 //global arrray to get accessed by other functions
 var nums = [];
 var sorted = new Boolean(false);
@@ -540,14 +541,12 @@ slider.oninput = function() {
 };
 //slider to change speed of the sorting algorithm
 var speed_slider = document.getElementById('speed_slider');
-var waitTime = 1000 - 10 * speed_slider.value;
+var waitTime = 20 - 2 * speed_slider.value;
 speed_slider.oninput = function() {
-    waitTime = 1000 - 10 * this.value;
+    waitTime = 20 - 2 * this.value;
 };
 //adding eventListeners to the buttons
 document.getElementById("array").addEventListener("click", arrays);
-//add onclick... change currentalgorithm.... add eventlistener on sort button
-// document.getElementById("bubbleSort").addEventListener("click", callForBubbleSort);
 document.getElementById("bubbleSort").onclick = ()=>{
     currentAlgorithm = "Bubble Sort";
     document.getElementById("dropdownMenuButton").innerHTML = currentAlgorithm;
@@ -604,21 +603,27 @@ function arrays() {
 function sortArray() {
     switch(currentAlgorithm){
         case "Bubble Sort":
+            _utils.disableButtons(true);
             callForBubbleSort();
             break;
         case "Selection Sort":
+            _utils.disableButtons(true);
             callForInsertionSort();
             break;
         case "Insertion Sort":
+            _utils.disableButtons(true);
             callForSelectionSort();
             break;
         case "Cyclic Sort":
+            _utils.disableButtons(true);
             callForCyclicSort();
             break;
         case "Merge Sort":
+            _utils.disableButtons(true);
             callForMergeSort();
             break;
         case "Quick Sort":
+            _utils.disableButtons(true);
             callForQuickSort();
             break;
     }
@@ -687,7 +692,7 @@ function callForQuickSort() {
     sorted = true;
 }
 
-},{"./algorithms/bubbleSort":"cLFZ1","./algorithms/selectionSort":"6SzgW","./algorithms/insertionSort":"RcfXM","./algorithms/cyclicSort":"02XYl","./algorithms/mergeSort":"fSdla","./algorithms/quickSort":"AJhuu","./compare/compareAllAlgorithms":"iIcC5"}],"cLFZ1":[function(require,module,exports) {
+},{"./algorithms/bubbleSort":"cLFZ1","./algorithms/selectionSort":"6SzgW","./algorithms/insertionSort":"RcfXM","./algorithms/cyclicSort":"02XYl","./algorithms/mergeSort":"fSdla","./algorithms/quickSort":"AJhuu","./compare/compareAllAlgorithms":"iIcC5","./algorithms/utils":"dSdlv"}],"cLFZ1":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "bubbleSort", ()=>bubbleSort
@@ -699,8 +704,8 @@ async function bubbleSort(nums, waitTime) {
         for(let j = 1; j < nums.length - i; j++){
             let div1 = document.getElementById('bar' + j);
             let div2 = document.getElementById('bar' + (j - 1));
-            div1.style.backgroundColor = 'red';
-            div2.style.backgroundColor = 'red';
+            div1.style.backgroundColor = 'aqua';
+            div2.style.backgroundColor = 'aqua';
             await _utils.addWait(waitTime);
             //check for the widths in the array and swap the array elements and div elements as well
             if (nums[j] < nums[j - 1]) {
@@ -708,11 +713,12 @@ async function bubbleSort(nums, waitTime) {
                 _utils.swapArray(nums, j, j - 1);
                 swapped = true;
             }
-            div1.style.backgroundColor = 'aqua';
-            div2.style.backgroundColor = 'aqua';
+            div1.style.backgroundColor = "#FF008C";
+            div2.style.backgroundColor = "#FF008C";
             if (!swapped) break;
         }
     }
+    _utils.disableButtons(false);
 }
 
 },{"./utils":"dSdlv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dSdlv":[function(require,module,exports) {
@@ -725,6 +731,8 @@ parcelHelpers.export(exports, "swapArray", ()=>swapArray
 parcelHelpers.export(exports, "getMaxIndex", ()=>getMaxIndex
 );
 parcelHelpers.export(exports, "addWait", ()=>addWait
+);
+parcelHelpers.export(exports, "disableButtons", ()=>disableButtons
 );
 //swapping the styles of two elements
 function swap(element1, element2) {
@@ -754,6 +762,12 @@ function addWait(milisec) {
             resolve('');
         }, milisec);
     });
+}
+function disableButtons(val) {
+    document.getElementById('array').disabled = val;
+    document.getElementById('array_slider').disabled = val;
+    document.getElementById('speed_slider').disabled = val;
+    document.getElementById('dropdownMenuButton').disabled = val;
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
@@ -798,14 +812,15 @@ async function selectionSort(nums, waitTime) {
         var max = _utils.getMaxIndex(nums, 0, last);
         let div1 = document.getElementById('bar' + last);
         let div2 = document.getElementById('bar' + max);
-        div1.style.backgroundColor = 'red';
-        div2.style.backgroundColor = 'red';
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
         await _utils.addWait(waitTime);
         _utils.swap(div1, div2);
         _utils.swapArray(nums, last, max);
-        div1.style.backgroundColor = 'aqua';
-        div2.style.backgroundColor = 'aqua';
+        div1.style.backgroundColor = "#FF008C";
+        div2.style.backgroundColor = "#FF008C";
     }
+    _utils.disableButtons(false);
 }
 
 },{"./utils":"dSdlv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"RcfXM":[function(require,module,exports) {
@@ -818,20 +833,21 @@ async function insertionSort(nums, waitTime) {
     for(var i = 0; i < nums.length; i++)for(var j = i + 1; j > 0; j--){
         let div1 = document.getElementById('bar' + j);
         let div2 = document.getElementById('bar' + (j - 1));
-        div1.style.backgroundColor = 'red';
-        div2.style.backgroundColor = 'red';
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
         await _utils.addWait(waitTime);
         if (nums[j] < nums[j - 1]) {
             _utils.swap(div1, div2);
             _utils.swapArray(nums, j, j - 1);
-            div1.style.backgroundColor = 'aqua';
-            div2.style.backgroundColor = 'aqua';
+            div1.style.backgroundColor = "#FF008C";
+            div2.style.backgroundColor = "#FF008C";
         } else {
-            div1.style.backgroundColor = 'aqua';
-            div2.style.backgroundColor = 'aqua';
+            div1.style.backgroundColor = "#FF008C";
+            div2.style.backgroundColor = "#FF008C";
             break;
         }
     }
+    _utils.disableButtons(false);
 }
 
 },{"./utils":"dSdlv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"02XYl":[function(require,module,exports) {
@@ -868,16 +884,17 @@ async function cyclicSort(array_length, waitTime) {
         var index = nums[i] / 10;
         var div1 = document.getElementById('bar' + i);
         var div2 = document.getElementById('bar' + index);
-        div1.style.backgroundColor = 'red';
-        div2.style.backgroundColor = 'red';
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
         await _utils.addWait(waitTime);
         if (nums[i] != nums[index]) {
             _utils.swapArray(nums, i, index);
             _utils.swap(div1, div2);
         } else i++;
-        div1.style.backgroundColor = 'aqua';
-        div2.style.backgroundColor = 'aqua';
+        div1.style.backgroundColor = "#FF008C";
+        div2.style.backgroundColor = "#FF008C";
     }
+    _utils.disableButtons(false);
 }
 
 },{"./utils":"dSdlv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fSdla":[function(require,module,exports) {
@@ -885,8 +902,10 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "mergeSort", ()=>mergeSort
 );
+var _utils = require("./utils");
 function mergeSort(nums, addWait) {
     mergeSort_helper(nums, 0, nums.length);
+    _utils.disableButtons(false);
 }
 async function merge(arr, left, mid, right) {
     var n1 = mid - left + 1;
@@ -911,23 +930,23 @@ async function merge(arr, left, mid, right) {
             j++;
         }
         k++;
-        divElement.style.backgroundColor = 'aqua';
+        divElement.style.backgroundColor = "#FF008C";
     }
     while(i < n1){
-        divElement.style.backgroundColor = 'red';
+        divElement.style.backgroundColor = 'aqua';
         divElement.style.width = leftArray[i] + 'px';
         arr[k] = leftArray[i];
         i++;
         k++;
-        divElement.style.backgroundColor = 'aqua';
+        divElement.style.backgroundColor = "#FF008C";
     }
     while(j < n2){
-        divElement.style.backgroundColor = 'red';
+        divElement.style.backgroundColor = 'aqua';
         divElement.width = rightArray[j] + 'px';
         arr[k] = rightArray[j];
         j++;
         k++;
-        divElement.style.backgroundColor = 'aqua';
+        divElement.style.backgroundColor = "#FF008C";
     }
 }
 function mergeSort_helper(arr, left, right) {
@@ -938,7 +957,7 @@ function mergeSort_helper(arr, left, right) {
     merge(arr, left, mid, right);
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"AJhuu":[function(require,module,exports) {
+},{"./utils":"dSdlv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"AJhuu":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "quickSort", ()=>quickSort
@@ -958,8 +977,8 @@ async function quickSort_helper(nums, low, high, waitTime) {
         while(nums[end] > pivot)end--;
         var div1 = document.getElementById('bar' + start);
         var div2 = document.getElementById('bar' + end);
-        div1.style.backgroundColor = 'red';
-        div2.style.backgroundColor = 'red';
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
         await _utils.addWait(waitTime);
         if (start <= end) {
             _utils.swapArray(nums, start, end);
@@ -967,11 +986,12 @@ async function quickSort_helper(nums, low, high, waitTime) {
             start++;
             end--;
         }
-        div1.style.backgroundColor = 'aqua';
-        div2.style.backgroundColor = 'aqua';
+        div1.style.backgroundColor = "#FF008C";
+        div2.style.backgroundColor = "#FF008C";
     }
     if (low < end) quickSort_helper(nums, low, end, waitTime);
     if (start < high) quickSort_helper(nums, start, high, waitTime);
+    if (start > end) _utils.disableButtons(false);
 }
 
 },{"./utils":"dSdlv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iIcC5":[function(require,module,exports) {
@@ -986,13 +1006,26 @@ var _cyclicSort = require("./compareAlgorithms/cyclicSort");
 var _mergeSort = require("./compareAlgorithms/mergeSort");
 var _quickSort = require("./compareAlgorithms/quickSort");
 var arr_length = 50;
-var time = 100;
+var time = 500;
 var compareArray = [];
+var algorithms = [
+    "BUBBLE SORT",
+    "SELECTION SORT",
+    "INSERTION SORT",
+    "CYCLIC SORT",
+    "MERGE SORT",
+    "QUICK SORT"
+];
 function compareAll() {
     var board = document.getElementById('board');
     board.innerHTML = "";
+    board.style.width = "1206px";
     var index = 1;
     for(var row = 0; row < 2; row++){
+        var labelDiv = document.createElement('div');
+        labelDiv.classList.add('row');
+        labelDiv.id = "row" + row;
+        board.appendChild(labelDiv);
         var rowDiv = document.createElement('div');
         for(var col = 0; col < 3; col++){
             var cell = document.createElement('div');
@@ -1002,6 +1035,17 @@ function compareAll() {
             rowDiv.appendChild(cell);
         }
         board.appendChild(rowDiv);
+    }
+    var algo = 0;
+    for(var i = 0; i < 2; i++){
+        var row = document.getElementById("row" + i);
+        for(var j = 0; j < 3; j++){
+            var col = document.createElement('div');
+            col.innerHTML = algorithms[algo];
+            algo++;
+            col.classList.add('algo-label');
+            row.appendChild(col);
+        }
     }
     for(var i = 0; i < arr_length; i++)compareArray.push(parseInt(Math.random() * 300));
     for(var cell_no = 0; cell_no < 6; cell_no++){
@@ -1017,9 +1061,9 @@ function compareAll() {
         }
     }
     console.log(compareArray);
-    _bubbleSort.bubbleSort(compareArray, time);
+    _bubbleSort.bubbleSort(compareArray, 100);
     _selectionSort.selectionSort(compareArray, time);
-    _insertionSort.insertionSort(compareArray, time);
+    _insertionSort.insertionSort(compareArray, 100);
     _cyclicSort.cyclicSort(time);
     _mergeSort.mergeSort(compareArray, time);
     _quickSort.quickSort(compareArray, time);
@@ -1039,8 +1083,8 @@ async function bubbleSort(nums, time) {
         for(let j = 1; j < arr.length - i; j++){
             let div1 = document.getElementById("compareBar0-" + j);
             let div2 = document.getElementById("compareBar0-" + (j - 1));
-            div1.style.backgroundColor = 'red';
-            div2.style.backgroundColor = 'red';
+            div1.style.backgroundColor = 'aqua';
+            div2.style.backgroundColor = 'aqua';
             //check for this later
             await _compareUtils.addWait(time);
             //check for the widths in the array and swap the array elements and div elements as well
@@ -1049,8 +1093,8 @@ async function bubbleSort(nums, time) {
                 _compareUtils.swapArray(arr, j, j - 1);
                 swapped = true;
             }
-            div1.style.backgroundColor = 'aqua';
-            div2.style.backgroundColor = 'aqua';
+            div1.style.backgroundColor = "#FF008C";
+            div2.style.backgroundColor = "#FF008C";
             if (!swapped) break;
         }
     }
@@ -1117,13 +1161,13 @@ async function selectionSort(nums, time) {
         var max = _compareUtils.getMaxIndex(arr, 0, last);
         let div1 = document.getElementById("compareBar1-" + last);
         let div2 = document.getElementById("compareBar1-" + max);
-        div1.style.backgroundColor = 'red';
-        div2.style.backgroundColor = 'red';
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
         await _compareUtils.addWait(time);
         _compareUtils.swap(div1, div2);
         _compareUtils.swapArray(arr, last, max);
-        div1.style.backgroundColor = 'aqua';
-        div2.style.backgroundColor = 'aqua';
+        div1.style.backgroundColor = "#FF008C";
+        div2.style.backgroundColor = "#FF008C";
     }
 }
 
@@ -1139,17 +1183,17 @@ async function insertionSort(nums, time) {
     for(var i = 0; i < arr.length - 1; i++)for(var j = i + 1; j > 0; j--){
         let div1 = document.getElementById("compareBar2-" + j);
         let div2 = document.getElementById("compareBar2-" + (j - 1));
-        div1.style.backgroundColor = 'red';
-        div2.style.backgroundColor = 'red';
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
         await _compareUtils.addWait(time);
         if (arr[j] < arr[j - 1]) {
             _compareUtils.swap(div1, div2);
             _compareUtils.swapArray(arr, j, j - 1);
-            div1.style.backgroundColor = 'aqua';
-            div2.style.backgroundColor = 'aqua';
+            div1.style.backgroundColor = "#FF008C";
+            div2.style.backgroundColor = "#FF008C";
         } else {
-            div1.style.backgroundColor = 'aqua';
-            div2.style.backgroundColor = 'aqua';
+            div1.style.backgroundColor = "#FF008C";
+            div2.style.backgroundColor = "#FF008C";
             break;
         }
     }
@@ -1184,15 +1228,15 @@ async function cyclicSort(time) {
         var index = arr[i] / 6;
         var div1 = document.getElementById("compareBar3-" + i);
         var div2 = document.getElementById("compareBar3-" + index);
-        div1.style.backgroundColor = 'red';
-        div2.style.backgroundColor = 'red';
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
         await _compareUtils.addWait(time);
         if (arr[i] != arr[index]) {
             _compareUtils.swapArray(arr, i, index);
             _compareUtils.swap(div1, div2);
         } else i++;
-        div1.style.backgroundColor = 'aqua';
-        div2.style.backgroundColor = 'aqua';
+        div1.style.backgroundColor = "#FF008C";
+        div2.style.backgroundColor = "#FF008C";
     }
 }
 
@@ -1219,7 +1263,7 @@ async function merge(arr, left, mid, right) {
     var k = left;
     while(i < n1 && j < n2){
         divElement = document.getElementById("compareBar4-" + k);
-        divElement.style.backgroundColor = 'red';
+        divElement.style.backgroundColor = 'aqua';
         if (leftArray[i] <= rightArray[j]) {
             divElement.style.width = leftArray[i] + 'px';
             arr[k] = leftArray[i];
@@ -1230,23 +1274,23 @@ async function merge(arr, left, mid, right) {
             j++;
         }
         k++;
-        divElement.style.backgroundColor = 'aqua';
+        divElement.style.backgroundColor = "#FF008C";
     }
     while(i < n1){
-        divElement.style.backgroundColor = 'red';
+        divElement.style.backgroundColor = 'aqua';
         divElement.style.width = leftArray[i] + 'px';
         arr[k] = leftArray[i];
         i++;
         k++;
-        divElement.style.backgroundColor = 'aqua';
+        divElement.style.backgroundColor = "#FF008C";
     }
     while(j < n2){
-        divElement.style.backgroundColor = 'red';
+        divElement.style.backgroundColor = 'aqua';
         divElement.width = rightArray[j] + 'px';
         arr[k] = rightArray[j];
         j++;
         k++;
-        divElement.style.backgroundColor = 'aqua';
+        divElement.style.backgroundColor = "#FF008C";
     }
 }
 function mergeSort_helper(arr, left, right) {
@@ -1278,8 +1322,8 @@ async function quickSort_helper(arr, low, high, time) {
         while(arr[end] > pivot)end--;
         var div1 = document.getElementById("compareBar5-" + start);
         var div2 = document.getElementById("compareBar5-" + end);
-        div1.style.backgroundColor = 'red';
-        div2.style.backgroundColor = 'red';
+        div1.style.backgroundColor = 'aqua';
+        div2.style.backgroundColor = 'aqua';
         await _compareUtils.addWait(time);
         if (start <= end) {
             _compareUtils.swapArray(arr, start, end);
@@ -1287,8 +1331,8 @@ async function quickSort_helper(arr, low, high, time) {
             start++;
             end--;
         }
-        div1.style.backgroundColor = 'aqua';
-        div2.style.backgroundColor = 'aqua';
+        div1.style.backgroundColor = "#FF008C";
+        div2.style.backgroundColor = "#FF008C";
     }
     if (low < end) quickSort_helper(arr, low, end, time);
     if (start < high) quickSort_helper(arr, start, high, time);
