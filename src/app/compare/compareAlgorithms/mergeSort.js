@@ -26,7 +26,7 @@ async function merge(arr, left, mid, right) {
     var k = left;
 
     while(i<n1 && j<n2) {
-        divElement = document.getElementById("compareBar" + 4 + '-' + k);
+        var divElement = document.getElementById("compareBar" + 4 + '-' + k);
         divElement.style.backgroundColor = 'aqua';
         if(leftArray[i] <= rightArray[j]) {
             divElement.style.width = leftArray[i] + 'px';

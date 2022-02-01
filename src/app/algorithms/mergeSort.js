@@ -1,7 +1,7 @@
 import {disableButtons} from "./utils";
 
 
-function mergeSort(nums, addWait) {
+function mergeSort(nums, waitTime) {
     mergeSort_helper(nums, 0, nums.length);
     disableButtons(false);
 }
@@ -26,7 +26,7 @@ async function merge(arr, left, mid, right) {
     var k = left;
 
     while(i<n1 && j<n2) {
-        divElement = document.getElementById('bar'+ k);
+        var divElement = document.getElementById('bar'+ k);
         divElement.style.backgroundColor = 'red';
 
         if(leftArray[i] <= rightArray[j]) {

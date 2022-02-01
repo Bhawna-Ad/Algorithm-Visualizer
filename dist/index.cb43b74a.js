@@ -903,7 +903,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "mergeSort", ()=>mergeSort
 );
 var _utils = require("./utils");
-function mergeSort(nums, addWait) {
+function mergeSort(nums, waitTime) {
     mergeSort_helper(nums, 0, nums.length);
     _utils.disableButtons(false);
 }
@@ -918,7 +918,7 @@ async function merge(arr, left, mid, right) {
     var j = 0;
     var k = left;
     while(i < n1 && j < n2){
-        divElement = document.getElementById('bar' + k);
+        var divElement = document.getElementById('bar' + k);
         divElement.style.backgroundColor = 'red';
         if (leftArray[i] <= rightArray[j]) {
             divElement.style.width = leftArray[i] + 'px';
@@ -1262,7 +1262,7 @@ async function merge(arr, left, mid, right) {
     var j = 0;
     var k = left;
     while(i < n1 && j < n2){
-        divElement = document.getElementById("compareBar4-" + k);
+        var divElement = document.getElementById("compareBar4-" + k);
         divElement.style.backgroundColor = 'aqua';
         if (leftArray[i] <= rightArray[j]) {
             divElement.style.width = leftArray[i] + 'px';
