@@ -1,5 +1,5 @@
 # Sorting-Visualizer
-Sorting Visualizer is an interactive tool used for visualization and comparison of various sorting algorithms. The application is built using JavaScript.
+Sorting Visualizer is a web application used for visualization and comparison of various sorting algorithms. The application is built using JavaScript.
 
 ## Content
 - [About the App](https://github.com/Bhawna-Ad/Sorting-Visualizer#about-the-app)
