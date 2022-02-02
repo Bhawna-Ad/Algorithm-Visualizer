@@ -2,9 +2,9 @@
 Sorting Visualizer is an interactive tool used for visualization and comparison of various sorting algorithms. The application is built using JavaScript.
 
 ## Content
-- [About the App](https://github.com/Bhawna-Ad/Sorting-Visualizer/new/main?readme=1#about-the-app)
-- [Features](https://github.com/Bhawna-Ad/Sorting-Visualizer/new/main?readme=1#features)
-- [Algorithms](https://github.com/Bhawna-Ad/Sorting-Visualizer/new/main?readme=1#sorting-algorithms)
+- [About the App](https://github.com/Bhawna-Ad/Sorting-Visualizer#about-the-app)
+- [Features](https://github.com/Bhawna-Ad/Sorting-Visualizer#features)
+- [Algorithms](https://github.com/Bhawna-Ad/Sorting-Visualizer#sorting-algorithms)
 
 ## About the App
 Sorting visualizer is a tool for visualizing various algorithms used in sorting. It makes it easier to understand the working of these sorting algorithms. The user can interact with the tool and play around with their own customizations with the help of various cool features of the application while learning the algorithms.
