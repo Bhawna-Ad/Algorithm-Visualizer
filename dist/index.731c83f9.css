@@ -84,6 +84,12 @@ body {
     background: linear-gradient(180deg, #303636, #222A2A);
 }
 
+img {
+    height: 2rem;
+    width: 2rem;
+    margin-bottom: 10px;
+}
+
 .parent {
     display: inline-flex;
 }
